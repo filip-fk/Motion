@@ -102,10 +102,10 @@ namespace Motion
                 log = pos.Coordinate.Point.Position.Longitude;
             }
 
-            check_speed();
+            check_speed(pos);
         }
 
-        public void check_speed()
+        public void check_speed(Geoposition pos2)
         {
             int lat_f = 0;
             int log_f = 0;
@@ -129,7 +129,11 @@ namespace Motion
 
             double v = Math.Round((((s / 2) / 60) / 60), 2);
 
-            speed.Text = v.ToString();
+            //speed.Text = v.ToString();
+            speed.Text = pos2.Coordinate.Speed.ToString();
+            longitude.Text = Math.Round(log, 4).ToString();
+            latitude.Text = Math.Round(lat, 4).ToString();
+            source.Text = pos2.Coordinate.PositionSource.ToString();
         }
     }
 }
